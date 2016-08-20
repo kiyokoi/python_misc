@@ -12,15 +12,12 @@ def question1(s, t):
     if len(t) > len(s) or len(t) == 0 or len(s) == 0:
         print "Invalid inputs!"
     else:
-        count = 0
         s = s.lower()
         t = t.lower()
         for i, c in enumerate(s):
             window = s[i:i+len(t)]
             if Counter(t) == Counter(window):
-                count += 1
-        if count > 0:
-            return True
+                return True
         return False
 
 ### Question1 test cases
