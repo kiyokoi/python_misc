@@ -6,19 +6,20 @@ return a string
 """
 ### Question2 main code
 def question2(a):
-    if len(a) == 0 or len(a) > 45:
+    if len(a) == 0:
         print "Invalid inputs!"
     else:
         a = a.lower()        
-        solution_list = []
+        longest = a[0]
+        palindrome = a[0]
         for i in range(len(a)):
-            j=0
-            while j < i:
-                letters = a[j:i]
+            for j in range(i):
+                letters = a[j:i+1]
                 if letters == letters[::-1]:
-                    solution_list.append(letters)
-                j += 1
-        return max(solution_list, key=len)
+                    palindrome = letters
+                    if len(palindrome) > len(longest):
+                        longest = palindrome
+        return longest
 
 ### Question2 test cases
 # Case 1: good example
@@ -31,8 +32,8 @@ a = ''
 print question2(a)
 # Expected output is an error message: "Invalid inputs!"
 
-# Case 3: 
-a = 'HippopotomonstrosesquipedaliophobiaFloccinaucinihilipilification'
+# Case 3: capital letters
+a = 'RACECAR'
 print question2(a)
 # Expected output is an error message: "Invalid inputs!"
 
